@@ -38,7 +38,7 @@ const api = axios.create();
 export default {
   name: 'HelloWorld',
   data: () => ({
-    msg: 'Welcome to Your Vue.js App'
+    msg: 'Goodbey'
   }),
 
   // async mounted() {

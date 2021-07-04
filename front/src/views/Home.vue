@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
+   <img alt="Vue logo" src="../assets/logo.png" />
 
     <div v-if="hasLoaded">
       <span>{{ infos[0].results[0].name.first }}</span>
