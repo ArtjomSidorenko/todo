@@ -1,39 +1,32 @@
-<template style="background-color: #cc2b5e ">
-  <div class="body">
-    <h1 align="center">Todo</h1>
+<template >
+  <div id="app" class="container">
+    <h1>Todo</h1>
     <div class="main">
       <div class="col-sm-6">
-        <a
-          href="https://dev.to/hugoliconv/lets-build-a-todo-app-using-vuejs-52in"
-          >What</a
-        >
+        <a href="https://dev.to/hugoliconv/lets-build-a-todo-app-using-vuejs-52in" style="padding: 10">What</a>
       </div>
       <div class="col-sm-6">
-        <a
-          href="https://dev.to/hugoliconv/lets-build-a-todo-app-using-vuejs-52in"
-          >About</a>
+        <a href="https://dev.to/hugoliconv/lets-build-a-todo-app-using-vuejs-52in">About</a>
       </div>
     </div>
     <div class="text">
-      <input
-        type="text"
-        class="todo"
-        placeholder="add"
-        v-model="newt"
-        @keyup.enter="addTodo"
-      />
-      <div class="button">
-      <button class="button" type="button" value="RELOAD" onclick="location.reload();" />
-      </div>
+
+        
+
+      <input type="text" class="todo" placeholder="add" v-model="newt" @keyup.enter="addTodo" />
+      
+      <button class="button" type="button" value="RELOAD" onclick="location.reload();"> Reload</button>
+     
       <p>List:</p>
-      <div v-for="(todo, index) in todos" :key="todo.id" class="todo-item">
+      
+          <div v-for="(todo, index) in todos" :key="todo.id" class="todo-item">
+
         <div class="todo-item-left">
           <input v-model="todo.completed" type="checkbox"/>
           <div
             v-if="!todo.editing"
             @dblclick="editTodo(todo)"
-            class="todo-item-label"
-          >
+            class="todo-item-label">
             <span :class="todo.completed ? 'green' : 'red'">{{ todo.title }}</span>
           </div>
           <input
@@ -46,6 +39,7 @@
 
         <div class="remove-item" @click="removeTodo(index)">&times;</div>
       </div>
+    
     </div>
   </div>
 </template>
@@ -53,10 +47,12 @@
 <script>
 export default {
   name: "todo-list",
+  
   data() {
     return {
       newt: "",
       idForTodo: 3,
+      
       todos: [
         {
           id: 1,
@@ -97,11 +93,25 @@ export default {
     },
   },
 };
+
 </script>
 
 
 <style>
+.list1
+{
+position: relative;
+left: 100px;
+}
+table
+{
 
+}
+.color1
+{
+color:blueviolet;
+
+}
 .green {
     color: green; 
 }
@@ -111,18 +121,30 @@ export default {
 }
 body 
 {
-bgcolor:#cc2b5e → #753a88;
+background-color:#cc2b5e → #753a88;
+}
+
+#wrapper{
+   
+    width: 650px  ;
+    height: auto;
+    background-color: rgb(198, 241, 200);
+    margin: 0 auto;
+    margin-top: 200px;
+    border-radius: 10px;
 }
 .todo{
-     padding: 4px;
-     font-size: 23px;
+    width: 100;
+     padding: 10px 18px;
+     font-size: 18px;
+     margin-bottom: 16;
      border-width: 4px;
-     border-color: black;
+     border-color: #313131;
      background-color: #FFFFFF;
-     color: black;
+     color: #313131;
      border-style: solid;
-     border-radius: 22px;
-     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.75);
+     border-radius: 15px;
+     box-shadow: 0px 0px 0px rgba(31, 31, 31, 0.75);
      text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.75);
   
 }
@@ -158,8 +180,85 @@ button:active {
 }
 
 .button {
-    background: #1abc9c;
-    border-bottom: 2px solid #12ab8d;
-    box-shadow: inset 0 -2px #12ab8d;
+    background: #313131;
+    border-bottom: 8px solid #1abc9c;
+    box-shadow: inset 0 0px #12ab8d;
+}
+
+.container
+{
+    max-width: 300px;
+    margin: 0 auto;
+}
+.todo-input
+{
+width: 100;
+padding: 10 18;
+font-size: 18;
+margin-bottom: 16;
+
+
+}
+
+.todo-item
+{
+margin-bottom: 12;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.remove-item
+{
+  cursor: pointer;
+  margin-left: 0;
+ 
+
+}
+ .remove-item:hover
+  {
+      color: black;
+  }
+  .todo-item-left
+  {
+      display: flex;
+      align-items: center;
+  }
+  .todo-item-label
+  {
+      padding: 10;
+      border: 1px solid white;
+  }
+  .todo-item-edit
+  {
+      align-items: center;
+      font-size: 24;
+      color: yellow;
+      margin-left: 12;
+      width: 100%;
+      padding: 10;
+      border: 1px solid #313131;
+    font-family: "Avenir", Arial, Helvetica, sans-serif;
+  }
+.todo-item-edit:focus
+{
+outline: none;
+}
+.completed
+{
+    text-decoration: line-through;
+    color: grey;
+}
+a
+{
+    color: #313131;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+
+a:active {
+  color: blue;
 }
 </style>
