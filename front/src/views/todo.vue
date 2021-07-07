@@ -36,7 +36,7 @@
           />
         </div>
 
-        <div class="remove-item" @click="removeTodo(index)">&times;</div>
+        <div class="remove-item" @click="removeTodo(todo)">&times;</div>
       </div>
 
     </div>
@@ -80,31 +80,43 @@ export default {
       if (this.newt.trim() == 0) {
         return;
       }
-      this.todos.push({
-        id: this.idForTodo,
-        task: this.newt,
-        completed: false,
+
+      axios.post("http://localhost:3333/api/todo/save", {
+        description: this.newt
+      })
+      .then(() => {
+        this.getTodoTasks()
       });
 
       this.newt = "";
-      this.idForTodo++;
+
     },
     editTodo(todo) {
       todo.editing = true;
       alert("double clicked");
     },
-    removeTodo(index) {
-      this.todos.splice(index, 1);
+    removeTodo(todo) {
+      // this.todos.splice(index, 1);
+
+      console.log(todo);
+
+
+      axios.post("http://localhost:3333/api/todo/deleted", {
+        removing : todo.id
+      })
+          .then(() => {
+            this.getTodoTasks()
+          });
 
     },
     getTodoTasks() {
       axios.get("http://localhost:3333/api/todo").then((response) => {
-        this.todos = this.todos.concat(response.data);
+        this.todos = response.data;
 
         this.hasLoaded = true;
       });
     }
-  },
+  }
 };
 
 
