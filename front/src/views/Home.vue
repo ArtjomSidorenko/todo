@@ -40,8 +40,6 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import axios from "axios";
 
-const api = axios.create();
-
 export default {
   data() {
     return {
@@ -60,7 +58,7 @@ export default {
 
   methods: {
     moreNames: function () {
-      api.get("https://randomuser.me/api/").then((response) => {
+      axios.get("https://randomuser.me/api/").then((response) => {
         this.infos.push(response.data);
         this.persons.push(response.data.results[0].name);
 
