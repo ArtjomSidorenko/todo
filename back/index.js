@@ -4,6 +4,8 @@ const cors = require('cors');
 const app = express();
 const port = 3333;
 const todoTasksRouter = require('./routes/todoTasks');
+const clientListsRouter = require('./routes/clientLists');
+
 
 
 app.get('*', cors());
@@ -20,6 +22,7 @@ app.use(
     })
 );
 app.use('/api', todoTasksRouter);
+app.use('/api', clientListsRouter);
 
 app.get('/api/greet', (req, res) => {
     res.set('Access-Control-Allow-Origin', 'http://localhost:8080')
